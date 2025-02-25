@@ -1,93 +1,45 @@
 #include <iostream>
+#include <string>
 
-
-
-int main() {
-
-	int edad;
-    char tipoBoleto;
-    const double PRECIO_BASE = 100.0;
-    double precioFinal;
-
-	std::cout << "Ingrese su edad: ";
+int main()
+{
+    int edad;
+    char tipo;
+    int precio =100;
+    
+    
+    std::cout<<"Ingresa tu edad";
     std::cin >> edad;
+    
+    std::cout<<"Ingresa el tipo \n N: Normal \n E: Estudiante \n S: Senior";
+    std::cin >> tipo;
+    
+    
+    if(tipo=='e'|| tipo=='E') {
+        std::cout<<"Precio de entrada 50";
+    }
+    else if(edad<5){
+        if(tipo!='s'|| tipo!='S'|| tipo!='e'|| tipo!='E'){
+            std::cout<<"Precio de entrada 0";
+        }
+    }
+    else if( edad>5 && edad<60) {
+        if(tipo=='n'|| tipo=='N'){
+        std::cout<<"Precio de entrada 100";    
+        }
+    }
+    
+    else if(edad>=60) {
+        if(tipo=='s'|| tipo=='S'){
+            std::cout<<"Precio de entrada 70";
+        }
+        else {
+            std::cout<<"Precio de entrada 100";
+        }
+    }
+    else if(tipo!='s'|| tipo!='S'|| tipo!='N'|| tipo!='n'|| tipo!='e'|| tipo!='E') {
+        std::cout<<"Tipo de entrada no valida";
+    }
 
-	if (edad < 5) {
-        std::cout << "El boleto es gratis." << std::endl;
-        return 0;
-	}
-
-	std::cout << "Elija el tipo de boleto (N: Normal, E: Estudiante, S: Senior): ";
-    std::cin >> tipoBoleto;
-
-	if (tipoBoleto == 'E') {
-        precioFinal = PRECIO_BASE * 0.5; 
-    } else if (tipoBoleto == 'S' && edad > 60) {
-        precioFinal = PRECIO_BASE * 0.7; 
-    } 
-
-	double precio1, precio2, descuento1, descuento2;
-
-	// Entrada de datos por medio de la terminal
-	std::cout << "Ingrese el precio del primer producto: ";
-	std::cin >> precio1;
-
-	if (precio1 < 0) {
-		std::cout << "El precio debe ser un valor positivo." << std::endl;
-		return 1;
-	}
-
-	std::cout << "Ingrese el porcentaje de descuento del primer producto (%): ";
-	std::cin >> descuento1;
-
-	if ((descuento1 < 0) || (descuento1 > 100)) {
-		std::cout << "El descuento debe ser un valor entre 0 y 100." << std::endl;
-		return 1;
-	}
-
-	std::cout << "Ingrese el precio del segundo producto: ";
-	std::cin >> precio2;
-
-	if (precio2 < 0) {
-		std::cout << "El precio debe ser un valor positivo." << std::endl;
-		return 1;
-	}
-
-	std::cout << "Ingrese el porcentaje de descuento del segundo producto (%): ";
-	std::cin >> descuento2;
-
-
-	if ((descuento2 < 0) || (descuento2 > 100)) {
-		std::cout << "El descuento debe ser un valor entre 0 y 100." << std::endl;
-		return 1;
-	}
-
-	double precioFinal1 = precio1 * (1 - (descuento1 / 100));
-	double precioFinal2 = precio2 * (1 - (descuento2 / 100));
-
-	if (precioFinal1 == precioFinal2) {
-		std::cout << "Los precios finales de los productos ingresados son los mismos." << std::endl;
-	} else if (precioFinal1 < precioFinal2) {
-		std::cout << "El primer producto es más barato que el segundo." << std::endl;
-	} else {
-		std::cout << "El segundo producto es más barato que el primero." << std::endl;
-	}
-
-
-	// Impresión de los datos finales
-
-	// Para el producto 1
-	std::cout << "== Producto 1 ==" << std::endl;
-	std::cout << "Precio sin descuento: " << precio1 << std::endl;
-	std::cout << "Descuento: " << descuento1 << std::endl;
-	std::cout << "Precio final: " << precioFinal1 << std::endl;
-
-
-	// Para el producto 2
-	std::cout << "== Producto 2 ==" << std::endl;
-	std::cout << "Precio sin descuento: " << precio2 << std::endl;
-	std::cout << "Descuento: " << descuento2 << std::endl;
-	std::cout << "Precio final: " << precioFinal2 << std::endl;
-
-	return 0; // Condición de salida del programa
+    return 0;
 }
